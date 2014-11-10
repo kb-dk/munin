@@ -16,7 +16,12 @@ BEGIN {
 		active=1
 	} else {
 		print "ERROR - out of sequence!" $0 | "cat 1>&2"
-		exit
+		print "FAILED"
+		print "RECORD START" | "cat 1>&2"
+		split($0, s, "batch ");
+		printf "%s", s[2];
+		printf ", %s", jobtype
+		active=1
 	}
 }
 
@@ -67,7 +72,7 @@ BEGIN {
 		#print "\tFAILED: " $0
 		printf ", FAILED\n";
 		active = 0
-		print "RECORD END" | "cat 1>&s"
+		print "RECORD END" | "cat 1>&2"
 	}
 }
 
