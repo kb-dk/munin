@@ -16,5 +16,6 @@ for line in fileinput.input():
 		else:
 			tEnd = parse(ss[4])
 			duration = tEnd - tStart
-			print "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}".format(
-				ss[0],ss[1],ss[2],ss[3],duration,ss[4],ss[5],ss[6],ss[7])
+			duration_milliseconds = duration.total_seconds()*1000
+			print "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}".format(
+				ss[0],ss[1],ss[2],ss[3],duration,duration_milliseconds,ss[4],ss[5],ss[6],ss[7])
